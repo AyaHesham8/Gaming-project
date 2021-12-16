@@ -29,6 +29,7 @@ public class ValerieIntro : MonoBehaviour
              "I'll help you sneak in and abort the missiles",
              "But be careful! you'll face many challenges and dangers",
              "Valerie: I'm READY!"
+
             };
             DialogueManager.SetSentences(dialogue);
             DialogueManager.StartCoroutine(DialogueManager.TypeDialogue());

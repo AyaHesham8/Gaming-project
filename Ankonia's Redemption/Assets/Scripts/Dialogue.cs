@@ -32,6 +32,7 @@ public class Dialogue : MonoBehaviour
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
+
             if(textDisplay.text == sentences[index])
             {
                 continueButton.SetActive(true);
@@ -45,7 +46,7 @@ public class Dialogue : MonoBehaviour
     public void NextSentence()
     {
         continueButton.SetActive(false);
-        if(index< sentences.Length - 1)
+        if(index < sentences.Length- 1)
         {
             index++;
             textDisplay.text = " ";
