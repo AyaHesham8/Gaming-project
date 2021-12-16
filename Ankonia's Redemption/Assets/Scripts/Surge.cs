@@ -16,12 +16,20 @@ public class Surge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetBool("Move", true);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        
     }
-   public void SetCollide()
+    void FixedUpdate()
     {
-        anim.SetBool("Collide", true);
-       
+        anim.SetBool("Move", true);
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, this.GetComponent<Rigidbody2D>().velocity.y);
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Valerie")
+        {
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2((float)-0.9, (float)-2.85);
+            anim.SetBool("Collide", true);
+
+        }
     }
 }

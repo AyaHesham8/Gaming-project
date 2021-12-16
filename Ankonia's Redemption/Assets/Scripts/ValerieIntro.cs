@@ -5,7 +5,6 @@ using UnityEngine;
 public class ValerieIntro : MonoBehaviour
 {
     public Dialogue DialogueManager;
-    private Surge father;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +20,6 @@ public class ValerieIntro : MonoBehaviour
     {
         if(other.tag == "Surge")
         {
-            father.GetComponent<Rigidbody2D>().velocity = new Vector2((float)-0.9, (float)-2.85);
-            father.SetCollide();
             string[] dialogue =
             {"Surge: Valerie! I just heard that Pyro the ruler will launch missiles towards planet Earth ",
              "This will kill billions of innocent people!",
