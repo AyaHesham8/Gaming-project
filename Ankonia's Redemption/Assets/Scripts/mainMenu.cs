@@ -12,6 +12,6 @@ public class mainMenu : MonoBehaviour
     }
 
     public void StartGame(){
-        SceneManager.LoadScene("Level1Scene1");
+        SceneManager.LoadScene("IntroScene");
     }
 }

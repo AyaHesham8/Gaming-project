@@ -24,4 +24,42 @@ public class Dialogue : MonoBehaviour
     {
         
     }
+    public IEnumerator TypeDialogue()
+    {
+        dialogueBox.SetActive(true);
+        player.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        foreach(char letter in sentences[index].ToCharArray())
+        {
+            textDisplay.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+            if(textDisplay.text == sentences[index])
+            {
+                continueButton.SetActive(true);
+            }
+        }
+    }
+    public void SetSentences(string[] sentences)
+    {
+        this.sentences = sentences;
+    }
+    public void NextSentence()
+    {
+        continueButton.SetActive(false);
+        if(index< sentences.Length - 1)
+        {
+            index++;
+            textDisplay.text = " ";
+            StartCoroutine(TypeDialogue());
+        }
+        else
+        {
+            textDisplay.text = " ";
+            continueButton.SetActive(false);
+            dialogueBox.SetActive(false);
+            this.sentences = null;
+            index = 0;
+            player.constraints = RigidbodyConstraints2D.None;
+            player.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
 }
