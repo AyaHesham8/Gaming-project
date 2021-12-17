@@ -40,6 +40,7 @@ public class Player: MonoBehaviour {
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         anim.SetBool("Slide", false);
+        anim.SetBool("speed", false);
     }
 
     // Update is called once per frame
@@ -48,10 +49,10 @@ public class Player: MonoBehaviour {
         if(Input.GetKeyDown(spacebar) && grounded)
         {
             jump();
-            anim.SetBool("Grounded", grounded);
+            anim.SetBool("grounded", grounded);
         }
         grounded = true;
-        anim.SetBool("Grounded", grounded);
+        anim.SetBool("grounded", grounded);
         if (Input.GetKey(L))
         {
            
@@ -61,7 +62,7 @@ public class Player: MonoBehaviour {
                 flip();
                 isFacingRight = false;
             }
-            anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+            anim.SetBool("speed", true);
            
         }
         if (Input.GetKey(R))
@@ -73,7 +74,7 @@ public class Player: MonoBehaviour {
                 flip();
                 isFacingRight = true;
             }
-            anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+            anim.SetBool("speed",true);
         }
         if (Input.GetKey(slide))
         {
